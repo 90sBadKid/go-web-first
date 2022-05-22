@@ -12,7 +12,7 @@ func (r *BookRouter) InitBookRouter(router *gin.RouterGroup) {
 
 	bookApi := api.ApiGroupApp.BookApiGroup.BookApi
 
-	routerGroup.GET("/list", bookApi.GetBookList)
-	routerGroup.POST("/add", bookApi.AddBook)
+	routerGroup.POST("/list", bookApi.PageList)
+	routerGroup.POST("/add", bookApi.Save)
 
 }

@@ -1,11 +1,11 @@
 package book
 
 import (
-	"go-web/global"
+	"go-web/global/model"
 )
 
 type Book struct {
-	global.Model
+	model.Model
 	Name        string  `json:"name"      gorm:"type:varchar(50);comment:书名" `
 	Author      string  `json:"author"    gorm:"type:varchar(20);comment:作者" `
 	ChiefEditor string  `json:"chiefEditor"  gorm:"type:varchar(20);comment:主编" `

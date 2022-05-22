@@ -1,11 +1,11 @@
 package book
 
-import "go-web/server"
+import "go-web/service"
 
 type BookApiGroup struct {
 	BookApi
 }
 
 var (
-	bookService = server.ServiceGroupApp.BookServiceGroup.BookService
+	bookService = service.ServiceGroupApp.BookServiceGroup.BookService
 )

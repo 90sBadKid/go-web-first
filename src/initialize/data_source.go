@@ -1,7 +1,7 @@
 package initialize
 
 import (
-	"go-web/global"
+	database "go-web/global/db"
 	"go-web/model/book"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -14,7 +14,9 @@ func InitDataBase() {
 	registerTables(db)
 	initDataSource(db)
 
-	global.GVA_DB = db
+	database.GVA_DB = &database.CustomDB{
+		DB: db,
+	}
 }
 
 func initDB() (db *gorm.DB) {
