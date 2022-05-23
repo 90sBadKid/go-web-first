@@ -1,13 +1,11 @@
 package main
 
-import (
-	"fmt"
-	"go-web/initialize"
-)
+import "go-web/initialize"
 
 func main() {
-	fmt.Println("Hello word")
-
+	//fmt.Println("Hello word")
+	//token, _ := jwt.GenerateToken()
+	//println(token)
 	initialize.InitDataBase()
 
 	engine := initialize.Routers()

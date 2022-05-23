@@ -11,8 +11,8 @@ import (
 	"time"
 )
 
-// MiddleWare 定义中间
-func MiddleWare(c *gin.Context) {
+// ExceptionHandler 定义中间
+func ExceptionHandler(c *gin.Context) {
 
 	defer failureHandler(c)
 

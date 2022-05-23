@@ -14,7 +14,8 @@ type CustomDB struct {
 	*gorm.DB
 }
 
-func (db *CustomDB) Page(pageQuery model.PageQueryModel, dbModeType interface{}) *model.PageModel {
+func (db *CustomDB) Page(tx *gorm.DB, pageQuery model.PageQueryModel, dbModeType interface{}) *model.PageModel {
+
 	//1.默认参数
 	if pageQuery.Size < 1 {
 		pageQuery.Size = 10
@@ -28,7 +29,7 @@ func (db *CustomDB) Page(pageQuery model.PageQueryModel, dbModeType interface{})
 	sliceOfT := reflect.SliceOf(typeOfT)
 	list := reflect.MakeSlice(sliceOfT, 0, 0).Interface()
 	var total int64
-	db.Model(&dbModel).Count(&total)
+	tx.Model(&dbModel).Count(&total)
 
 	pageModel := &model.PageModel{
 		List:  &list,
@@ -37,7 +38,7 @@ func (db *CustomDB) Page(pageQuery model.PageQueryModel, dbModeType interface{})
 		Size:  pageQuery.Size,
 	}
 	offset := pageQuery.Size * (pageQuery.Page - 1)
-	db.Limit(pageModel.Size).Offset(offset).Find(&list)
+	tx.Limit(pageModel.Size).Offset(offset).Find(&list)
 
 	pageModel.List = &list
 	return pageModel

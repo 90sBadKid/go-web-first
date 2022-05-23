@@ -2,15 +2,15 @@ package book
 
 import (
 	"github.com/gin-gonic/gin"
-	"go-web/global/model"
 	"go-web/global/result"
 	"go-web/model/book"
+	"go-web/model/book/req"
 )
 
 type BookApi struct{}
 
 func (api *BookApi) PageList(c *gin.Context) {
-	var pageQuery model.PageQueryModel
+	var pageQuery req.ModelBookPageQuery
 	_ = c.ShouldBind(&pageQuery)
 
 	pageModel := bookService.PageList(pageQuery)
