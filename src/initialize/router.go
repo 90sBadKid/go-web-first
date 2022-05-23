@@ -10,11 +10,10 @@ func Routers() *gin.Engine {
 	engine := gin.Default()
 
 	group := engine.Group("")
-
 	group.Use(middleware.ExceptionHandler)
-	group.Use(middleware.JwtHandler)
 
 	router.RouterGroupApp.InitBookRouter(group)
+	router.RouterGroupApp.InitJwtRouter(group)
 
 	return engine
 }
