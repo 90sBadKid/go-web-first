@@ -1,9 +1,11 @@
 package req
 
-import "go-web/global/model"
+import (
+	"go-web/global/page"
+)
 
 type ModelBookPageQuery struct {
-	model.PageQueryModel
+	*page.PageQueryModel
 
 	Name string `json:"name"`
 }

@@ -13,7 +13,7 @@ func (api *BookApi) PageList(c *gin.Context) {
 	var pageQuery req.ModelBookPageQuery
 	_ = c.ShouldBind(&pageQuery)
 
-	pageModel := bookService.PageList(pageQuery)
+	pageModel := bookService.PageList(&pageQuery)
 	c.JSON(200, result.SuccessfulData(pageModel))
 }
 
